@@ -3,9 +3,7 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <thread>
-
-
+#include <cmath>
 int main() {
     glfwInit();
 
@@ -31,14 +29,39 @@ int main() {
     glGenBuffers(1, &vertexBuffer);
     printf("%u\n", vertexBuffer);
 
+
+    //Triangle
+    float vertices[] = {
+        -0.5f, -0.5f,
+         0.0f,  0.5f,
+         0.5f, -0.5f
+    };
+
+    //create VBO
+    GLuint vbo;
+    glGenBuffers(1, &vbo); //generate 1 buffer
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
     while (!glfwWindowShouldClose(window)) {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        //get elapsed time since programm launch 
+        float time = (float)glfwGetTime();
+
+        // vary color based on time
+        float red = (std::sin(time) + 1.0f) / 2.0f;
+        float green = (std::cos(time) + 1.0f) / 2.0f;
+        float blue = (std::sin(time * 2.0f) + 1.0f) / 2.0f;
+
         glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(red, green, blue, 1.0f);
+
+        
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
+    glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
 }
