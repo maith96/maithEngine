@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/dp/maith/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\c++.exe    -o CMakeFiles\\maith.dir\\src\\main.cpp.obj -c C:\\Users\\dp\\maith\\src\\main.cpp",
+  "file": "C:/Users/dp/maith/src/main.cpp",
+  "output": "CMakeFiles/maith.dir/src/main.cpp.obj"
+}
+]
