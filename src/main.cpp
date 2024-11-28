@@ -1,3 +1,5 @@
+#define GLEW_STATIC
+
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -19,10 +21,15 @@ int main() {
     }
     glfwMakeContextCurrent(window);
 
+    glewExperimental = GL_TRUE;
     if (glewInit() != GLEW_OK) {
         std::cout << "Failed to initialize GLEW" << std::endl;
         return -1;
     }
+
+    GLuint vertexBuffer;
+    glGenBuffers(1, &vertexBuffer);
+    printf("%u\n", vertexBuffer);
 
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
