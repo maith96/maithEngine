@@ -19,7 +19,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
                                    "out vec4 FragColor;\n"
                                    "void main()\n"
                                    "{\n"
-                                   "   FragColor = vec4(0.3f, 0.5f, 0.2f, 1.0f);\n"
+                                   "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
                                    "}\n\0";
 int main()
 {
@@ -103,7 +103,7 @@ int main()
     unsigned int indices[] = {
         // note that we start from 0!
         0, 1, 3, // first Triangle
-        1, 3, 2  // second Triangle
+        1, 2, 3  // second Triangle
     };
 
     unsigned int VBO, VAO, EBO;
